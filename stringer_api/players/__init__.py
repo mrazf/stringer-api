@@ -48,6 +48,7 @@ def get_player_name(raw_page):
 
     return content
 
+
 def get_player_dob(biog_tds):
     raw_dob = str(biog_tds[2].text.strip())
 
