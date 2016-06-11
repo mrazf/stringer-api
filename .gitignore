@@ -9,6 +9,7 @@ temp.py
 
 # Config
 config/dev.py
+config/aws.py
 config/betfair.pem
 
 # Byte-compiled / optimized / DLL files
@@ -100,3 +101,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
