@@ -2,6 +2,7 @@ import boto3
 import logging
 from flask import Flask
 from flask_cache import Cache
+from flask_cors import CORS
 from betfair import Betfair
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
@@ -14,6 +15,8 @@ client.login(app.config['BETFAIR_USER_NAME'], app.config['BETFAIR_PASSWORD'])
 
 cache = Cache(config=app.config['CACHE_CONFIG'])
 cache.init_app(app)
+
+CORS(app, origins=app.config['CORS'])
 
 dynamo = boto3.client('dynamodb', region_name='eu-west-1')
 
