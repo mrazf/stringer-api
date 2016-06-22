@@ -1,4 +1,4 @@
-from ..dao import orders
+from .. import orders
 
 mens_list = ['Men ', 'Men\'s', 'Mens']
 womens_list = ['Women ', 'Women\'s', 'Womens']
@@ -27,7 +27,7 @@ def add_player_names(raw_match):
 
 
 def add_tournament(raw_match):
-    raw_match['tournament'] = raw_match['path'][0]
+    raw_match['tournament'] = raw_match['path'][0].strip()
 
     return raw_match
 

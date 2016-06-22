@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, abort, request
 from bs4 import BeautifulSoup
 from urllib import quote
 import json
-from stringer_api import phantom, cache, dynamo
+from stringer_api import phantom, cache, dynamo, app
 
 players_api = Blueprint('players_api', __name__)
 
@@ -38,6 +38,7 @@ def get_tennis_abstract_name(betfair_name):
 
 @cache.cached(timeout=21600, key_prefix='rawTennisAbstract%s')
 def get_career_page(tennisAbstractName):
+    app.logger.info("Request made to: {0}".format("http://www.tennisabstract.com/cgi-bin/player.cgi?p=" + tennisAbstractName + '&f=ACareerqq'))
     phantom.get("http://www.tennisabstract.com/cgi-bin/player.cgi?p=" + tennisAbstractName + '&f=ACareerqq')
 
     return phantom.page_source

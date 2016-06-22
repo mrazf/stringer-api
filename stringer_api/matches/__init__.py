@@ -1,22 +1,18 @@
 from flask import Blueprint, jsonify, request
-from ..dao import site_navigation
-import enrich
-import prune_path
+from ..dao import matches as matches_dao
 
 matches_api = Blueprint('matches_api', __name__)
 
 
 @matches_api.route('/matches')
 def matches():
-    raw_match_paths = site_navigation.get_raw_match_paths()
-    enriched_matches = enrich.do(raw_match_paths)
-    pruned_matches = prune_path.do(enriched_matches)
-    filtered_matches = _filter(pruned_matches)
+    matches = matches_dao.get()
+    filtered_matches = _filter(matches)
 
     result = {
         'matches': filtered_matches,
         'meta': {
-            'matchCount': len(raw_match_paths),
+            'matchCount': len(matches),
             'filteredMatchCount': len(filtered_matches)
         }
     }

@@ -31,9 +31,11 @@ except Exception as e:
 from stringer_api.matches import matches_api
 from stringer_api.account import account_api
 from stringer_api.players import players_api
+from stringer_api.tournaments import tournaments_api
 app.register_blueprint(matches_api)
 app.register_blueprint(account_api)
 app.register_blueprint(players_api)
+app.register_blueprint(tournaments_api)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
