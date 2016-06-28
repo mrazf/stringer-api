@@ -4,7 +4,6 @@ import requests
 from transform import process_root
 
 
-@cache.cached(timeout=3600, key_prefix='betfair_navigation')
 def get_navigation():
     url = "https://api.betfair.com/exchange/betting/rest/v1/en/navigation/menu.json"
     headers = {
