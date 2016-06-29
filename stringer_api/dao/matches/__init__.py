@@ -8,6 +8,7 @@ import prune_path
 def get():
     raw_match_paths = site_navigation.get_raw_match_paths()
     enriched_matches = enrich.do(raw_match_paths)
-    pruned_matches = prune_path.do(enriched_matches)
+    singles_matches = filter(lambda x: x['singles'], enriched_matches)
+    pruned_matches = prune_path.do(singles_matches)
 
     return pruned_matches

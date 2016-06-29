@@ -11,7 +11,7 @@ players_api = Blueprint('players_api', __name__)
 def player(betfair_name):
     result = get_player(betfair_name)
 
-    return jsonify(result)
+    return jsonify(player=result)
 
 
 def get_player(betfair_name):
@@ -21,6 +21,7 @@ def get_player(betfair_name):
     tds = biography.find_all('td')
 
     result = {
+        "id": betfair_name,
         "name": get_player_name(biography),
         "dateOfBirth": get_player_dob(tds)
     }
