@@ -10,7 +10,7 @@ temp.py
 # Config
 config/dev.py
 config/aws.py
-config/betfair.pem
+stringer_api/config/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

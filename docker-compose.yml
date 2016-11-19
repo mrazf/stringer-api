@@ -1,0 +1,10 @@
+version: '2'
+services:
+  stringer-api:
+    image: mrazf/stringer-api:latest
+    build: .
+    ports:
+      - "5000:5000"
+    volumes: 
+      - .:/app
+    command: python /app/dev.py

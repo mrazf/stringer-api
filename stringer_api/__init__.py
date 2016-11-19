@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 
 app = application = Flask(__name__)
-app.config.from_envvar('STRINGER_API_CONFIG')
+app.config.from_object('stringer_api.config.secrets')
 
 client = Betfair(app.config['BETFAIR_APPLICATION_KEY'], app.config['BETFAIR_PEM_PATH'])
 client.login(app.config['BETFAIR_USER_NAME'], app.config['BETFAIR_PASSWORD'])
