@@ -1,0 +1,8 @@
+.git
+*.pyc
+__pycache__
+env
+
+stringer_api/config/betfair.pem
+stringer_api/config/secrets.py
+stringer_api/config/secrets.pyc
