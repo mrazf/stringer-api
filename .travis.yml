@@ -13,7 +13,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
   -in ./.travis/cert.pem.enc -out .travis/cert.pem -d
 - openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
-  -in ./.travis/key.pem.enc -out ./.travis/key.pem -d
+  -in ./.travis/key.pem.enc -out .travis/key.pem -d
 - openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
-  -in ./.travis/ca.pem.enc -out ./.travis/ca.pem -d
+  -in ./.travis/ca.pem.enc -out .travis/ca.pem -d
 after_success: docker-compose restart
