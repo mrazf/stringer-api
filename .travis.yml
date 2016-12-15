@@ -13,4 +13,4 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
-after_success: docker-compose restart --verbose
+after_success: docker-compose --verbose --host=$DOCKER_HOST --tlsverify --tlscacert=Users/farrem09/.docker/machine/machines/digitalocean/ca.pem --tlscert=Users/farrem09/.docker/machine/machines/digitalocean/cert.pem --tlskey=Users/farrem09/.docker/machine/machines/digitalocean/key.pem restart
