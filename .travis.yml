@@ -11,7 +11,7 @@ env:
   - secure: B7fn/G/WE0SHdREx9R+AtcWGaslBQTAgPfGNFJqAnjAVZRTp3XPKb5gc/SlAUUFImyWGDLvO6ho85P5chlD6IdRzpUX79wn49ZKeQgXwuTdZnlE6W3AgJ73tKZAOu7672TO1/tt8PeXKHJQ6o7nj1TcBaCz5RN0AHzor3loN2SKf/WG6FWOUf6R0TgJTHQ/scxf7A2cB63GTO/iSn1yW83/mWOjiD3RYRVJTN5eZyEOeo5vQOljQ7FFZCnwY9PFfUsvjbQpUg/5hUKSfA7MZ0lu0UTsXJxVgKH47Uer+Dtk40X6lw8Uhh5iTs6l5c5goPtEX/dw3emQHsj6E2RUKC84gl07kaeF+dlFP+uboHsoA2at3AM/e9Sve78CcXwocc/S7hVaXbaMCVJDJgtN7KS8F2E2qj2fLTxiKHnZjQEdfKKDOmU4VrmzbOqzc/CT9wc8Nnvl5q/zcOmUzk1Av9WkSYpe2NiaXbtYHWroT0PxuGL5GrvOm01K0ZwEnvGLZuXGRFAwgKuzZXtzOUEtChA52H9aOYcylXhvHbIJOT1/As+SApXuwuoVynifAtyFggjQKHLnFqSpV0lG2v7z1QY1gg0a4XAyEobxdWsSrPuX0dt4wqjDtcqdlkUC9QEVp4bFU9gqg+DpgR7z9K6H5d6ynJxt0XxGbgrRS+YpTtDs=
 before_install:
 - openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
-  -in ./.travis/key.pem.enc -out ~\/.travis/key.pem -d
+  -in ./.travis/key.pem.enc -out ./.travis/key.pem -d
 - openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
   -in ./.travis/cert.pem.enc -out ~\/.travis/cert.pem -d
 - openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
