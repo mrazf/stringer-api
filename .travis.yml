@@ -1,10 +1,16 @@
 language: python
 python:
-  - "2.7"
-
+- '2.7'
 script: python --version
-
 services:
-  - docker
-after_success:
-  docker-compose restart
+- docker
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
+  -in ./.travis/key.pem.enc -out ~\/.docker/machine/machines/digitalocean/key.pem -d
+- openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
+  -in ./.travis/cert.pem.enc -out ~\/.docker/machine/machines/digitalocean/cert.pem -d
+- openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
+  -in ./.travis/ca.pem.enc -out ~\/.docker/machine/machines/digitalocean/ca.pem -d
+
+after_success: docker-compose restart
