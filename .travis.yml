@@ -1,7 +1,10 @@
 language: python
 python:
 - '2.7'
-script: python --version
+script:
+- echo $DOCKER_CERT_PATH
+- echo $DOCKER_TLS_VERIFY
+- echo $DOCKER_HOST
 services:
 - docker
 env:
@@ -9,12 +12,10 @@ env:
   - DOCKER_CERT_PATH=.
   - DOCKER_TLS_VERIFY=1
   - secure: fTCGLLpidz9rEQcq3h44CUfjGMHszK1wb2Lw+Gog59FvwimRwhUs+BADD2z6eXJmLis+9YS56AzQwkZ1HBBpJaeXYwmfgsrp2Gq4IP0HTPqS0Ww7hJ+chdBS6aAFwVILupXajVapXp/Kpfh4/8e1TC2qZsi3IUn+USuDfvZfHxo0WnpXflrebjnLyNMyRELvGxuJYCo1iBuMI+fqCeiPAUjey0uFkrRmGoFx8rp7H6jt3obH9fY1CnRNncb1H4ojNSXjAAnvgvnL4YplL6Q1os0EB6cjSQ4iJmEj0Iue4Nct0IMhGOCoX66Pvz94NLa6B+/lyD0+o8b8T+lF812rg0UkqkBGBwHjSpuLk6+Sbe1FrUQ5PMayRPwu+Alc5k5kxoLkcH3N5G/aUYOKcwFkPXnjrFnkFkT57JqL6W3k39fBxvex5vh1Kco+aI2OqX77PcPSKsH5xrNNwz9BatOojeYk+n/9WgR9/qE+265/jUHxTER/LkBko2dJhrVj3L7K8mKLDJGXgWMtqWMqS/31MJdEtdAEjgEkzrHHD3777Y9vbSCHDkgitHnRu5N0AM7qLrd2tQJY1GE5rr1WaVxrbQmoBTG2+XpqG6d/z45214nTwadJnHBlAr8OJ7rAZeklU6hncOZA7ow8r2y06LqcnWuhzIVtkcYVlePgKuFhWdE=
-script:
-  - echo $DOCKER_CERT_PATH
-  - echo $DOCKER_TLS_VERIFY
-  - echo $DOCKER_HOST
 before_install:
 - openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
-after_success: docker-compose --verbose --host=$DOCKER_HOST --tlsverify --tlscacert=Users/farrem09/.docker/machine/machines/digitalocean/ca.pem --tlscert=Users/farrem09/.docker/machine/machines/digitalocean/cert.pem --tlskey=Users/farrem09/.docker/machine/machines/digitalocean/key.pem restart
+after_success: docker-compose --verbose --host=$DOCKER_HOST --tlsverify --tlscacert=Users/farrem09/.docker/machine/machines/digitalocean/ca.pem
+  --tlscert=Users/farrem09/.docker/machine/machines/digitalocean/cert.pem --tlskey=Users/farrem09/.docker/machine/machines/digitalocean/key.pem
+  restart
