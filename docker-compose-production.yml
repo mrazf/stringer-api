@@ -5,3 +5,4 @@ services:
     build: .
     volumes: 
       - /etc/home/stringer-api:/app/stringer_api/config
+    command: /usr/bin/supervisord
