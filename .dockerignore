@@ -6,3 +6,10 @@ env
 stringer_api/config/betfair.pem
 stringer_api/config/secrets.py
 stringer_api/config/secrets.pyc
+
+secrets.tar
+secrets.tar.enc
+
+ca.pem
+cert.pem
+key.pem
