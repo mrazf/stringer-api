@@ -17,4 +17,4 @@ before_install:
 before_deploy: docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD && docker build . -t mrazf/stringer-api:latest && docker push mrazf/stringer-api:latest
 deploy:
   provider: script
-  script: travis-deploy.sh
+  script: chmod u+x ./travis-deploy.sh
