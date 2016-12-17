@@ -14,9 +14,5 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_21f4d18cdb71_key -iv $encrypted_21f4d18cdb71_iv
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
-before_deploy: docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD && docker build . -t mrazf/stringer-api:latest && docker push mrazf/stringer-api:latest
-deploy:
-  provider: script
-  script: docker-compose pull && docker-compose --verbose -f docker-compose-production.yml up
-  on:
-    branch: master
+after_success: docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD && docker build . -t mrazf/stringer-api:latest && docker push mrazf/stringer-api:latest
+after_script: docker-compose pull && docker-compose --verbose -f docker-compose-production.yml up
