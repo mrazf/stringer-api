@@ -18,3 +18,5 @@ before_deploy: docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD && docker bu
 deploy:
   provider: script
   script: "travis-deploy.sh"
+  on:
+    branch: master
