@@ -4,5 +4,5 @@ services:
     image: mrazf/stringer-api:latest
     build: .
     volumes: 
-      - /etc/home/stringer-api:/app/stringer_api/config
+      - /home/stringer-api:/app/stringer_api/config
     command: /usr/bin/supervisord
