@@ -15,7 +15,7 @@ before_install:
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
 before_deploy:
-  script: docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker build . -t mrazf/stringer-api:latest && docker push mrazf/stringer-api:latest
+  script: travis-before-deploy.sh
 deploy:
   provider: script
-  script: docker-compose pull && docker-compose --verbose -f docker-compose-production.yml up
+  script: travis-deploy.sh
